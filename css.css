@@ -5,72 +5,169 @@
   box-sizing: border-box;
 }
 
+/* === GUIA D'ESTIL - VARIABLES === */
+:root {
+  --color-principal:    #2E9E4F;
+  --color-principal-m:  #6DCF8A;
+  --color-principal-c:  #C8F0D8;
+  --color-secundari:    #2C3E50;
+  --color-secundari-m:  #7F8C8D;
+  --color-secundari-c:  #BDC3C7;
+  --neutre-negre:       #1A1A1A;
+  --neutre-gris:        #555555;
+  --neutre-gris-c:      #E0E0E0;
+  --neutre-blanc:       #FFFFFF;
+  --color-oferta:       #F0C020;
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  color: #34495E;
-  background-color: #DFF3E7;
+  color: var(--color-secundari);
+  background-color: var(--color-principal-c);
 }
 
-/* MOBILE FIRST - Diseño base para móviles */
+/* =============================================
+   GRAELLA FLEXIBLE - MOBILE FIRST (IOC)
+   ============================================= */
 
-/* Header */
+.fila::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+  width: 100%;
+}
+
+@media only screen and (min-width: 576px) {
+  .col-s-1  { width: 8.33%; }
+  .col-s-2  { width: 16.66%; }
+  .col-s-3  { width: 25%; }
+  .col-s-4  { width: 33.33%; }
+  .col-s-5  { width: 41.66%; }
+  .col-s-6  { width: 50%; }
+  .col-s-7  { width: 58.33%; }
+  .col-s-8  { width: 66.66%; }
+  .col-s-9  { width: 75%; }
+  .col-s-10 { width: 83.33%; }
+  .col-s-11 { width: 91.66%; }
+  .col-s-12 { width: 100%; }
+}
+
+@media only screen and (min-width: 768px) {
+  .col-1  { width: 8.33%; }
+  .col-2  { width: 16.66%; }
+  .col-3  { width: 25%; }
+  .col-4  { width: 33.33%; }
+  .col-5  { width: 41.66%; }
+  .col-6  { width: 50%; }
+  .col-7  { width: 58.33%; }
+  .col-8  { width: 66.66%; }
+  .col-9  { width: 75%; }
+  .col-10 { width: 83.33%; }
+  .col-11 { width: 91.66%; }
+  .col-12 { width: 100%; }
+}
+
+/* =============================================
+   HEADER
+   ============================================= */
+
 header {
-  background-color: #93D5AF;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background-color: var(--color-principal-m);
 }
 
-.header-bar {
+.header-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.8rem 1rem;
-  max-width: 1200px;
+  padding: 0.4rem 2rem;
   margin: 0 auto;
   gap: 1rem;
 }
 
-.logo {
-  color: black;
-  font-size:small;
-  font-weight: bold;
-
+.header-top-logo {
+  color: var(--neutre-negre);
+  font-size: 0.82rem;
+  font-weight: 600;
   white-space: nowrap;
+}
+
+.buscador-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: var(--neutre-blanc);
+  border-radius: 20px;
+  padding: 0.3rem 0.8rem;
+  gap: 0.4rem;
+  width: 280px;
 }
 
 .buscador {
   flex: 1;
-  max-width: 400px;
-  padding: 0.6rem 1rem;
   border: none;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  background-color: white;
+  outline: none;
+  font-size: 0.85rem;
+  background: transparent;
+  color: var(--neutre-gris);
+  width: 100%;
 }
 
-.buscador:focus {
-  outline: 2px solid #27AE60;
+.buscador-icon {
+  color: var(--neutre-gris);
+  font-size: 0.95rem;
 }
 
-/* Navegación */
-nav {
-  background-color: #34495E;
+.header-icons {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.header-icons i {
+  font-size: 1.3rem;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+/* HEADER - Nav inferior */
+.header-nav {
+  background-color: var(--color-principal);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.header-nav-inner {
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.logo {
+  color: var(--neutre-blanc);
+  font-size: 1.6rem;
+  font-weight: 900;
+  font-style: italic;
+  padding: 0.5rem 1.2rem 0.5rem 0;
+  white-space: nowrap;
+  border-right: 2px solid rgba(255,255,255,0.35);
+  margin-right: 0.5rem;
 }
 
 .nav-menu {
   list-style: none;
   display: flex;
   flex-direction: column;
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .nav-menu li {
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
 }
 
 .nav-menu li:last-child {
@@ -79,36 +176,64 @@ nav {
 
 .nav-menu li a {
   display: block;
-  color: white;
+  color: var(--neutre-blanc);
   text-align: center;
-  padding: 1rem;
+  padding: 0.7rem 0.9rem;
   text-decoration: none;
-  transition: all 0.3s;
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+  white-space: nowrap;
 }
 
 .nav-menu li a:hover,
 .nav-menu li a.active {
-  background-color: #27AE60;
-  color: white;
+  background-color: var(--color-principal-m);
+  color: var(--neutre-blanc);
+  border-radius: 20px;
 }
 
-/* Container principal */
+@media only screen and (min-width: 576px) {
+  .nav-menu {
+    flex-direction: row;
+    align-items: center;
+  }
+  .nav-menu li {
+    border-bottom: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .logo { font-size: 1.8rem; }
+  .nav-menu li a { padding: 0.7rem 1.1rem; }
+}
+
+/* =============================================
+   CONTAINER
+   ============================================= */
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
 }
 
-/* Banner */
+@media only screen and (min-width: 768px) {
+  .container { padding: 2rem; }
+}
+
+/* =============================================
+   BANNER
+   ============================================= */
+
 .banner {
-  background: linear-gradient(135deg, #27AE60 0%, #93D5AF 100%);
-  color: white;
+  background: var(--color-secundari);
+  color: var(--neutre-blanc);
   text-align: center;
   padding: 3rem 1.5rem;
   border-radius: 10px;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+  box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
 }
 
 .banner-content h2 {
@@ -121,9 +246,22 @@ nav {
   opacity: 0.95;
 }
 
-/* Section Title */
+@media only screen and (min-width: 576px) {
+  .banner-content h2 { font-size: 2.5rem; }
+  .banner-content p  { font-size: 1.3rem; }
+}
+
+@media only screen and (min-width: 768px) {
+  .banner { padding: 4rem 2rem; }
+  .banner-content h2 { font-size: 3rem; }
+}
+
+/* =============================================
+   SECTION TITLE
+   ============================================= */
+
 .section-title {
-  color: #27AE60;
+  color: var(--color-principal);
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
   text-align: center;
@@ -139,22 +277,24 @@ nav {
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
-  background-color: #27AE60;
+  background-color: var(--color-principal);
 }
 
-/* Categorías */
-.categorias {
+/* =============================================
+   SECCIONS
+   ============================================= */
+
+.categorias,
+.ofertas,
+.info-boxes,
+.contacto-section,
+.mapa-section {
   margin-bottom: 3rem;
 }
 
-.grid-categorias {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-}
-
+/* Cards categories */
 .categoria-card {
-  background: white;
+  background: var(--neutre-blanc);
   border-radius: 10px;
   padding: 1.5rem;
   text-align: center;
@@ -165,39 +305,34 @@ nav {
 
 .categoria-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 20px rgba(39, 174, 96, 0.2);
-  border-color: #93D5AF;
+  box-shadow: 0 5px 20px rgba(46, 158, 79, 0.2);
+  border-color: var(--color-principal-m);
 }
 
 .categoria-icon {
   font-size: 3rem;
   margin-bottom: 0.5rem;
+  color: var(--color-principal);
+}
+
+.categoria-icon i {
+  font-size: 2.8rem;
 }
 
 .categoria-card h3 {
-  color: #34495E;
+  color: var(--color-secundari);
   font-size: 1.2rem;
   margin-bottom: 0.3rem;
 }
 
 .categoria-card p {
-  color: #7f8c8d;
+  color: var(--color-secundari-m);
   font-size: 0.9rem;
 }
 
-/* Ofertas */
-.ofertas {
-  margin-bottom: 3rem;
-}
-
-.grid-ofertas {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-
+/* Cards ofertes */
 .oferta-card {
-  background: white;
+  background: var(--neutre-blanc);
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 3px 10px rgba(0,0,0,0.1);
@@ -207,15 +342,15 @@ nav {
 
 .oferta-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 20px rgba(39, 174, 96, 0.2);
+  box-shadow: 0 5px 20px rgba(46, 158, 79, 0.2);
 }
 
 .oferta-badge {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: #e74c3c;
-  color: white;
+  background-color: var(--color-oferta);
+  color: var(--neutre-negre);
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-weight: bold;
@@ -226,91 +361,80 @@ nav {
 .oferta-img {
   width: 100%;
   height: 200px;
-  background: linear-gradient(135deg, #93D5AF 0%, #27AE60 100%);
+  background: linear-gradient(135deg, var(--color-principal-m) 0%, var(--color-principal) 100%);
 }
 
 .oferta-card h3 {
-  color: #34495E;
+  color: var(--color-secundari);
   padding: 1rem;
   font-size: 1.2rem;
 }
 
 .precio-anterior {
-  color: #95a5a6;
+  color: var(--color-secundari-c);
   text-decoration: line-through;
   padding: 0 1rem;
   font-size: 0.9rem;
 }
 
 .precio-actual {
-  color: #27AE60;
+  color: var(--color-principal);
   font-weight: bold;
   font-size: 1.5rem;
   padding: 0 1rem 1rem 1rem;
 }
 
 /* Info Boxes */
-.info-boxes {
-  margin-bottom: 3rem;
-}
-
-.grid-info {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-}
-
 .info-box {
-  background: white;
+  background: var(--neutre-blanc);
   border-radius: 10px;
   padding: 1.5rem;
   text-align: center;
   box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  border-left: 4px solid #27AE60;
+  border-left: 4px solid var(--color-principal);
 }
 
 .info-icon {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
+  color: var(--color-principal);
+}
+
+.info-icon i {
+  font-size: 2.2rem;
 }
 
 .info-box h3 {
-  color: #27AE60;
+  color: var(--color-principal);
   margin-bottom: 0.5rem;
   font-size: 1.3rem;
 }
 
 .info-box p {
-  color: #34495E;
+  color: var(--color-secundari);
   margin: 0.2rem 0;
 }
 
-/* Footer */
+/* =============================================
+   FOOTER
+   ============================================= */
+
 footer {
-  background-color: #34495E;
-  color: white;
+  background-color: var(--color-secundari);
+  color: var(--neutre-blanc);
   padding: 2rem 1rem;
   margin-top: 3rem;
 }
 
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
 .footer-col h4 {
-  color: #93D5AF;
+  color: var(--color-principal-m);
   margin-bottom: 1rem;
   font-size: 1.2rem;
 }
 
 .footer-col p {
   margin: 0.5rem 0;
-  color: #bdc3c7;
+  color: var(--color-secundari-c);
 }
 
 .footer-col ul {
@@ -322,39 +446,28 @@ footer {
 }
 
 .footer-col ul li a {
-  color: #bdc3c7;
+  color: var(--color-secundari-c);
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .footer-col ul li a:hover {
-  color: #93D5AF;
+  color: var(--color-principal-m);
 }
 
 .footer-bottom {
   text-align: center;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(255,255,255,0.1);
-  color: #bdc3c7;
+  color: var(--color-secundari-c);
   font-size: 0.9rem;
+  clear: both;
 }
 
-/* ESTILOS PÁGINA DE CONTACTO */
-
-.contacto-section {
-  margin-bottom: 3rem;
-}
-
-.grid-contacto {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  margin-top: 1.5rem;
-}
 
 .formulario-container,
 .info-contacto {
-  background: white;
+  background: var(--neutre-blanc);
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 3px 15px rgba(0,0,0,0.1);
@@ -362,12 +475,11 @@ footer {
 
 .formulario-container h2,
 .info-contacto h2 {
-  color: #27AE60;
+  color: var(--color-principal);
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
 }
 
-/* Formulario */
 .contacto-form {
   display: flex;
   flex-direction: column;
@@ -381,7 +493,7 @@ footer {
 
 .form-group label {
   margin-bottom: 0.5rem;
-  color: #34495E;
+  color: var(--color-secundari);
   font-weight: 600;
 }
 
@@ -389,20 +501,20 @@ footer {
 .form-group select,
 .form-group textarea {
   padding: 0.75rem;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--neutre-gris-c);
   border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
   transition: border-color 0.3s;
-  background-color: #f8f9fa;
+  background-color: var(--neutre-gris-c);
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #27AE60;
-  background-color: white;
+  border-color: var(--color-principal);
+  background-color: var(--color-principal-c);
 }
 
 .form-group textarea {
@@ -411,8 +523,8 @@ footer {
 }
 
 .btn-submit {
-  background-color: #27AE60;
-  color: white;
+  background-color: var(--color-principal);
+  color: var(--neutre-blanc);
   padding: 1rem;
   border: none;
   border-radius: 8px;
@@ -423,14 +535,13 @@ footer {
 }
 
 .btn-submit:hover {
-  background-color: #1e8449;
+  background-color: var(--color-principal-m);
 }
 
-/* Info de contacto */
 .contacto-item {
   margin-bottom: 1.5rem;
   padding-bottom: 1.5rem;
-  border-bottom: 2px solid #DFF3E7;
+  border-bottom: 2px solid var(--color-principal-c);
 }
 
 .contacto-item:last-child {
@@ -440,23 +551,18 @@ footer {
 }
 
 .contacto-item h3 {
-  color: #27AE60;
+  color: var(--color-principal);
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
 }
 
 .contacto-item p {
-  color: #34495E;
+  color: var(--color-secundari);
   margin: 0.3rem 0;
 }
 
-/* Mapa */
-.mapa-section {
-  margin-bottom: 3rem;
-}
-
 .mapa-section h2 {
-  color: #27AE60;
+  color: var(--color-principal);
   margin-bottom: 1rem;
   font-size: 1.8rem;
   text-align: center;
@@ -465,135 +571,31 @@ footer {
 .mapa-placeholder {
   width: 100%;
   height: 300px;
-  background: linear-gradient(135deg, #93D5AF 0%, #27AE60 100%);
+  background: linear-gradient(135deg, var(--color-principal-m) 0%, var(--color-principal) 100%);
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--neutre-blanc);
   font-size: 1.2rem;
-  box-shadow: 0 3px 15px rgba(39, 174, 96, 0.3);
+  box-shadow: 0 3px 15px rgba(46, 158, 79, 0.3);
 }
 
-/* TABLET - Media Query para tablets (768px+) */
-@media screen and (min-width: 768px) {
-  .logo {
-    font-size: 1.3rem;
-  }
-
-  .buscador {
-    max-width: 500px;
-  }
-
-  .nav-menu {
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  .nav-menu li {
-    border-bottom: none;
-    border-right: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .nav-menu li:last-child {
-    border-right: none;
-  }
-
-  .nav-menu li a {
-    padding: 1rem 1.5rem;
-  }
-
-  .banner-content h2 {
-    font-size: 2.5rem;
-  }
-
-  .banner-content p {
-    font-size: 1.3rem;
-  }
-
-  /* Grid 2 columnas en tablet */
-  .grid-categorias {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .grid-ofertas {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .grid-info {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .footer-content {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* Contacto */
-  .grid-contacto {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .mapa-placeholder {
-    height: 400px;
-  }
+@media only screen and (min-width: 576px) {
+  .mapa-placeholder { height: 400px; }
 }
 
-/* DESKTOP - Media Query para escritorio (1024px+) */
-@media screen and (min-width: 1024px) {
-  .container {
-    padding: 2rem;
-  }
-
-  .logo {
-    font-size: 1.5rem;
-  }
-
-  .buscador {
-    max-width: 600px;
-  }
-
-  .banner {
-    padding: 4rem 2rem;
-  }
-
-  .banner-content h2 {
-    font-size: 3rem;
-  }
-
-  /* Grid 3 columnas en desktop */
-  .grid-categorias {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-
-  .grid-ofertas {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-
-  .grid-info {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .footer-content {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  /* Contacto */
-  .grid-contacto {
-    grid-template-columns: 2fr 1fr;
-  }
-
-  .mapa-placeholder {
-    height: 500px;
-  }
+@media only screen and (min-width: 768px) {
+  .mapa-placeholder { height: 500px; }
 }
 
-/* DESKTOP GRANDE - Media Query para pantallas grandes (1440px+) */
-@media screen and (min-width: 1440px) {
-  .grid-categorias {
-    grid-template-columns: repeat(6, 1fr);
+
+.ocultar-mobil {
+  display: none;
+}
+
+@media only screen and (min-width: 576px) {
+  .ocultar-mobil {
+    display: block;
   }
 }
