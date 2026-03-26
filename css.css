@@ -232,6 +232,7 @@ header {
 
 .nav-menu li {
   border-bottom: 1px solid rgba(255,255,255,0.15);
+  text-align: center;
 }
 
 .nav-menu li:last-child {
@@ -245,7 +246,7 @@ header {
   padding: 0.7rem 0.9rem;
   text-decoration: none;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1rem;
   transition: color 0.2s;
   white-space: nowrap;
 }
@@ -275,7 +276,7 @@ header {
 
 @media only screen and (min-width: 768px) {
   .logo { font-size: 1.8rem; }
-  .nav-menu { flex-wrap: nowrap; justify-content: flex-start; }
+  .nav-menu { flex-wrap: nowrap; justify-content: center; }
   .nav-menu li a { font-size: 0.82rem; padding: 0.7rem 0.6rem; }
 }
 
@@ -463,7 +464,79 @@ header {
   text-shadow: 0 1px 4px rgba(0,0,0,0.3);
 }
 
-/* Info Boxes */
+/* Newsletter */
+.info-newslatter {
+  margin-bottom: 3rem;
+}
+
+.newslatter {
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  border-top: 4px solid #2E9E4F;
+}
+
+.newslatter-icon {
+  font-size: 2rem;
+  color: #2E9E4F;
+  margin-bottom: 0.5rem;
+}
+
+.newslatter h3 {
+  color: #2C3E50;
+  font-size: 1.3rem;
+  margin-bottom: 0.4rem;
+}
+
+.newslatter p {
+  color: #7F8C8D;
+  font-size: 0.9rem;
+  margin-bottom: 1.2rem;
+}
+
+.newslatter-form {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: 450px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.newslatter-form input[type="email"] {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.6rem 1rem;
+  border: 2px solid #E0E0E0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+  color: #2C3E50;
+}
+
+.newslatter-form input[type="email"]:focus {
+  border-color: #2E9E4F;
+}
+
+.newslatter-form button {
+  background-color: #2E9E4F;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.newslatter-form button:hover {
+  background-color: #6DCF8A;
+}
+
+
 .info-box {
   background: #FFFFFF;
   border-radius: 10px;
